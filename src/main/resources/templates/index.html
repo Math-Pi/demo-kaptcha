@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码测试</title>
+</head>
+<body>
+<form action="/login" method="post">
+验证码：<input type="text" name="code">
+<img id="test"
+     style="height: 32px;width: 96px;border-radius: 4px;"
+     alt="如果看不清楚，请单击图片刷新！" title="点击刷新"
+     class="pointer" src="/captcha?type=math" onclick="refreshCode()" >
+<input type="submit" value="提交">
+</form>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+    let captcha;
+    refreshCode = function () {
+        captcha = "captcha?type=math&t=" + $.now();
+        document.getElementById("test").setAttribute("src",captcha);
+    }
+</script>
+</html>
